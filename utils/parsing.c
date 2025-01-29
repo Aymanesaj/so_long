@@ -6,7 +6,7 @@
 /*   By: asajed <asajed@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 16:06:33 by asajed            #+#    #+#             */
-/*   Updated: 2025/01/28 18:17:40 by asajed           ###   ########.fr       */
+/*   Updated: 2025/01/29 08:55:02 by asajed           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,4 +79,5 @@ void	parsing(t_data *ptr)
 		print_error_exit("file format isn't supported", ptr);
 	ft_map(ptr, map_len(ptr));
 	check_map_if_valid(ptr);
+	player_position(ptr);
 }

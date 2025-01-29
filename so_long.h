@@ -6,7 +6,7 @@
 /*   By: asajed <asajed@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 09:01:57 by asajed            #+#    #+#             */
-/*   Updated: 2025/01/28 18:38:29 by asajed           ###   ########.fr       */
+/*   Updated: 2025/01/28 18:56:53 by asajed           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,6 @@ void			clean_and_exit(t_data *ptr, int key);
 void			check_map_if_valid(t_data *ptr);
 void			player_position(t_data *ptr);
 int				count_char(t_data *ptr, char c, int num);
+void    		clean_and_exit(t_data *ptr, int key);
+
 #endif
