@@ -6,7 +6,7 @@
 /*   By: asajed <asajed@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 16:08:21 by asajed            #+#    #+#             */
-/*   Updated: 2025/01/31 16:28:18 by asajed           ###   ########.fr       */
+/*   Updated: 2025/01/31 18:00:03 by asajed           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,30 +26,39 @@ void	change_coorinates(t_data *ptr, int key)
 		ptr->ground.x = ptr->player.x;
 		ptr->player.x += 1;
 		ptr->ground.y = ptr->player.y;
+		ptr->moves++;
 	}
-	if (key == 65361)
+	else if (key == 65361)
 	{
 		if (ptr->map[ptr->player.y][ptr->player.x - 1] == '1')
 			return ;
 		ptr->ground.x = ptr->player.x;
 		ptr->player.x -= 1;
 		ptr->ground.y = ptr->player.y;
+		ptr->moves++;
 	}
-	if (key == 65362)
+	else if (key == 65362)
 	{
-		if (ptr->map[ptr->player.y + 1][ptr->player.x] == '1')
+		if (ptr->map[ptr->player.y - 1][ptr->player.x] == '1')
 			return ;
 		ptr->ground.x = ptr->player.x;
 		ptr->ground.y = ptr->player.y;
 		ptr->player.y -= 1;
+		ptr->moves++;
 	}
-	if (key == 65364)
+	else if (key == 65364)
 	{
 		if (ptr->map[ptr->player.y + 1][ptr->player.x] == '1')
 			return ;
 		ptr->ground.x = ptr->player.x;
 		ptr->ground.y = ptr->player.y;
 		ptr->player.y += 1;
+		ptr->moves++;
 	}
+	else
+		return ;
 	move_player(ptr);
+	ft_putstr_fd("moves : ", 1);
+	ft_putnbr_fd(ptr->moves, 1);
+	ft_putstr_fd("\n", 1);
 }

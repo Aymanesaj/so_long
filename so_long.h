@@ -6,7 +6,7 @@
 /*   By: asajed <asajed@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 09:01:57 by asajed            #+#    #+#             */
-/*   Updated: 2025/01/31 16:14:16 by asajed           ###   ########.fr       */
+/*   Updated: 2025/01/31 17:20:58 by asajed           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ typedef struct s_data
 	t_element	ground;
 	t_image		img;
 	int			fd;
+	int			moves;
 }				t_data;
 
 void			change_coorinates(t_data *ptr, int key);
