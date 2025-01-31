@@ -6,7 +6,7 @@
 /*   By: asajed <asajed@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 09:23:56 by asajed            #+#    #+#             */
-/*   Updated: 2025/01/28 18:35:20 by asajed           ###   ########.fr       */
+/*   Updated: 2025/01/30 16:18:15 by asajed           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,16 @@
 
 int	count_char(t_data *ptr, char c, int num)
 {
-	int (i), (j), (count);
 	char	**map;
+
+	int (i), (j), (count);
 	i = 1;
 	j = 0;
 	count = 0;
 	if (num == 1)
 		map = ptr->map;
 	else
-	 	map = ptr->filled_map;
+		map = ptr->filled_map;
 	while (map[i])
 	{
 		j = 0;
@@ -54,8 +55,8 @@ void	check_if_rectangular(t_data *ptr)
 	}
 	ptr->rows = j;
 	ptr->columns = last_line(map);
-	ptr->height = ptr->columns * 81;
-	ptr->width = ptr->rows * 60;
+	ptr->width = 32 * j;
+	ptr->height = 32 * ptr->columns + 32;
 }
 
 void	check_walls(t_data *ptr, int j)
@@ -85,7 +86,7 @@ void	check_walls(t_data *ptr, int j)
 	}
 }
 
-int		invalid_char(char **map)
+int	invalid_char(char **map)
 {
 	int (i), (k);
 	i = 0;
@@ -96,7 +97,7 @@ int		invalid_char(char **map)
 		{
 			if (map[i][k] != 'P' && map[i][k] != '0' && map[i][k] != '1'
 				&& map[i][k] != 'E' && map[i][k] != 'C' && map[i][k] != '\n')
-					return (1);
+				return (1);
 			k++;
 		}
 		i++;
@@ -108,11 +109,11 @@ void	check_map_if_valid(t_data *ptr)
 {
 	check_if_rectangular(ptr);
 	check_walls(ptr, last_line(ptr->map));
-	if (count_char(ptr, 'P',1) != 1)
+	if (count_char(ptr, 'P', 1) != 1)
 		print_error_exit("there is no player", ptr);
-	if (count_char(ptr, 'C',1) == 0)
+	if (count_char(ptr, 'C', 1) == 0)
 		print_error_exit("no coins to collect", ptr);
-	if (count_char(ptr, 'E',1) != 1)
+	if (count_char(ptr, 'E', 1) != 1)
 		print_error_exit("it must be at least one exit", ptr);
 	if (invalid_char(ptr->map))
 		print_error_exit("invalid character", ptr);
