@@ -6,7 +6,7 @@
 /*   By: asajed <asajed@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 09:01:57 by asajed            #+#    #+#             */
-/*   Updated: 2025/01/29 18:00:16 by asajed           ###   ########.fr       */
+/*   Updated: 2025/01/31 16:14:16 by asajed           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@ typedef struct s_element
 	int			x;
 	void		*img;
 	int			y;
-	int			pixel_x;
-	int			pixel_y;
 	int			height;
 	int			width;
 }				t_element;
@@ -39,7 +37,6 @@ typedef struct s_image
 	int			bits_per_pixel;
 	int			size_line;
 }				t_image;
-
 
 typedef struct s_data
 {
@@ -61,6 +58,7 @@ typedef struct s_data
 	int			fd;
 }				t_data;
 
+void			change_coorinates(t_data *ptr, int key);
 void			parsing(t_data *ptr);
 void			ft_free(char **strs);
 int				ft_len(char *map);

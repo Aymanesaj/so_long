@@ -6,7 +6,7 @@
 /*   By: asajed <asajed@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 09:23:56 by asajed            #+#    #+#             */
-/*   Updated: 2025/01/30 16:18:15 by asajed           ###   ########.fr       */
+/*   Updated: 2025/01/31 10:13:20 by asajed           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	count_char(t_data *ptr, char c, int num)
 {
 	char	**map;
 
-	int (i), (j), (count);
+	int(i), (j), (count);
 	i = 1;
 	j = 0;
 	count = 0;
@@ -56,7 +56,9 @@ void	check_if_rectangular(t_data *ptr)
 	ptr->rows = j;
 	ptr->columns = last_line(map);
 	ptr->width = 32 * j;
-	ptr->height = 32 * ptr->columns + 32;
+	ptr->height = 32 * ptr->columns + 32 ;
+	if (ptr->rows > 60 || ptr->columns > 32)
+		print_error_exit("map is too large", ptr);
 }
 
 void	check_walls(t_data *ptr, int j)

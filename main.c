@@ -6,7 +6,7 @@
 /*   By: asajed <asajed@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 15:58:37 by asajed            #+#    #+#             */
-/*   Updated: 2025/01/30 14:01:44 by asajed           ###   ########.fr       */
+/*   Updated: 2025/01/31 16:15:15 by asajed           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int	insert_key(int key, t_data *ptr)
 	printf("%d\n", key);
 	if (key == 65307)
 		clean_and_exit(ptr, 0);
+	else 
+		change_coorinates(ptr, key);
 	return (0);
 }
 
@@ -39,7 +41,6 @@ int	main(int ac, char **av)
 	initialize_data(&ptr);
 	ptr.file = av[1];
 	parsing(&ptr);
-	// clean_and_exit(&ptr, 0);
 	initialize_mlx(&ptr);
 	draw_map(&ptr);
 	mlx_key_hook(ptr.win, insert_key, &ptr);
