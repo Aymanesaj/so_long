@@ -6,7 +6,7 @@
 /*   By: asajed <asajed@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 16:30:16 by asajed            #+#    #+#             */
-/*   Updated: 2025/01/31 10:17:14 by asajed           ###   ########.fr       */
+/*   Updated: 2025/01/31 18:35:23 by asajed           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ int	clean_and_exit(t_data *ptr, int key)
 		mlx_destroy_image(ptr->mlx, ptr->wall.img);
 	if (ptr->ground.img)
 		mlx_destroy_image(ptr->mlx, ptr->ground.img);
+	if (ptr->door.img)
+		mlx_destroy_image(ptr->mlx, ptr->door.img);
 	if (ptr->mlx)
 		(mlx_destroy_display(ptr->mlx), free(ptr->mlx));
 	exit(ptr->status);

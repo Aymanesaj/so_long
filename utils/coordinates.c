@@ -6,7 +6,7 @@
 /*   By: asajed <asajed@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 08:46:03 by asajed            #+#    #+#             */
-/*   Updated: 2025/01/31 10:06:34 by asajed           ###   ########.fr       */
+/*   Updated: 2025/01/31 20:58:25 by asajed           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,6 @@ void	flood_fill(char **map, int x, int y, t_data *ptr)
 		return ;
 	if (map[y][x] == '1' || map[y][x] == 'V')
 		return ;
-	// if (map[y][x] == 'E' && count_char(ptr, 'C', 2) != 0)
-	// 	return ;
 	map[y][x] = 'V';
 	flood_fill(map, x + 1, y, ptr);
 	flood_fill(map, x - 1, y, ptr);
@@ -47,7 +45,7 @@ void	flood_fill(char **map, int x, int y, t_data *ptr)
 
 void	determine_player_xy(t_data *ptr)
 {
-	int(x), (y);
+	int (x), (y);
 	y = 0;
 	while (ptr->map[y])
 	{

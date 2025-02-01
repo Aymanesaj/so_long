@@ -6,7 +6,7 @@
 /*   By: asajed <asajed@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 09:01:57 by asajed            #+#    #+#             */
-/*   Updated: 2025/01/31 17:20:58 by asajed           ###   ########.fr       */
+/*   Updated: 2025/01/31 20:32:58 by asajed           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,14 @@ typedef struct s_data
 	t_element	player;
 	t_element	wall;
 	t_element	ground;
+	t_element	door;
 	t_image		img;
 	int			fd;
 	int			moves;
+	int			coin;
 }				t_data;
 
-void			change_coorinates(t_data *ptr, int key);
+void			change_coordinates(t_data *ptr, int key);
 void			parsing(t_data *ptr);
 void			ft_free(char **strs);
 int				ft_len(char *map);

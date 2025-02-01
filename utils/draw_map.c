@@ -6,7 +6,7 @@
 /*   By: asajed <asajed@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 17:46:40 by asajed            #+#    #+#             */
-/*   Updated: 2025/01/31 16:03:24 by asajed           ###   ########.fr       */
+/*   Updated: 2025/01/31 21:00:12 by asajed           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,26 @@
 
 void	draw_image(t_data *ptr, int x, int y, char c)
 {
-	int(width), (height);
+	int (width), (height);
 	width = 32;
 	height = 32;
 	if (c == '1')
-		mlx_put_image_to_window(ptr->mlx, ptr->win, ptr->wall.img, x  *width, y
-				* height);
-	if (c == '0')
+		mlx_put_image_to_window(ptr->mlx, ptr->win, ptr->wall.img, x * width, y
+			* height);
+	if (c == '0' || c == 'E')
 		mlx_put_image_to_window(ptr->mlx, ptr->win, ptr->ground.img, x * width,
-				y * height);
+			y * height);
 	if (c == 'P')
 		mlx_put_image_to_window(ptr->mlx, ptr->win, ptr->player.img, x * width,
-				y * height);
+			y * height);
 	if (c == 'C')
-		mlx_put_image_to_window(ptr->mlx, ptr->win, ptr->coins.img, x * width,
-				y * height);
+		mlx_put_image_to_window(ptr->mlx, ptr->win, ptr->coins.img, x * width, y
+			* height);
 }
 
 void	draw_map(t_data *ptr)
 {
-	int(i), (j);
+	int (i), (j);
 	i = 0;
 	while (ptr->map[i])
 	{

@@ -6,7 +6,7 @@
 /*   By: asajed <asajed@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 15:58:37 by asajed            #+#    #+#             */
-/*   Updated: 2025/01/31 17:56:22 by asajed           ###   ########.fr       */
+/*   Updated: 2025/01/31 20:33:24 by asajed           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	initialize_data(t_data *ptr)
 	ft_bzero(&ptr->wall, sizeof(t_element));
 	ft_bzero(&ptr->coins, sizeof(t_element));
 	ft_bzero(&ptr->ground, sizeof(t_element));
+	ft_bzero(&ptr->door, sizeof(t_element));
 }
 
 int	insert_key(int key, t_data *ptr)
@@ -27,7 +28,7 @@ int	insert_key(int key, t_data *ptr)
 	if (key == 65307)
 		clean_and_exit(ptr, 0);
 	else 
-		change_coorinates(ptr, key);
+		change_coordinates(ptr, key);
 	return (0);
 }
 
