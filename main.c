@@ -6,7 +6,7 @@
 /*   By: asajed <asajed@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 15:58:37 by asajed            #+#    #+#             */
-/*   Updated: 2025/01/31 20:33:24 by asajed           ###   ########.fr       */
+/*   Updated: 2025/02/01 10:15:03 by asajed           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,9 @@ void	initialize_data(t_data *ptr)
 
 int	insert_key(int key, t_data *ptr)
 {
-	// printf("%d\n", key);
 	if (key == 65307)
 		clean_and_exit(ptr, 0);
-	else 
+	else
 		change_coordinates(ptr, key);
 	return (0);
 }

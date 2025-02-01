@@ -6,7 +6,7 @@
 /*   By: asajed <asajed@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 16:08:21 by asajed            #+#    #+#             */
-/*   Updated: 2025/02/01 09:27:57 by asajed           ###   ########.fr       */
+/*   Updated: 2025/02/01 10:13:45 by asajed           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,43 +64,22 @@ void	move_player(t_data *ptr)
 
 void	change_coordinates(t_data *ptr, int key)
 {
-	if (key == 65363)
-	{
-		if (checkcoins_exit(ptr, ptr->player.x + 1, ptr->player.y))
-			return ;
-		ptr->ground.x = ptr->player.x;
+	ptr->ground.x = ptr->player.x;
+	ptr->ground.y = ptr->player.y;
+	if (key == 65363 && !(checkcoins_exit(ptr, ptr->player.x + 1,
+				ptr->player.y)))
 		ptr->player.x += 1;
-		ptr->ground.y = ptr->player.y;
-		ptr->moves++;
-	}
-	else if (key == 65361)
-	{
-		if (checkcoins_exit(ptr, ptr->player.x - 1, ptr->player.y))
-			return ;
-		ptr->ground.x = ptr->player.x;
+	else if (key == 65361 && !(checkcoins_exit(ptr, ptr->player.x - 1,
+				ptr->player.y)))
 		ptr->player.x -= 1;
-		ptr->ground.y = ptr->player.y;
-		ptr->moves++;
-	}
-	else if (key == 65362)
-	{
-		if (checkcoins_exit(ptr, ptr->player.x, ptr->player.y - 1))
-			return ;
-		ptr->ground.x = ptr->player.x;
-		ptr->ground.y = ptr->player.y;
+	else if (key == 65362 && !(checkcoins_exit(ptr, ptr->player.x,
+				ptr->player.y - 1)))
 		ptr->player.y -= 1;
-		ptr->moves++;
-	}
-	else if (key == 65364)
-	{
-		if (checkcoins_exit(ptr, ptr->player.x, ptr->player.y + 1))
-			return ;
-		ptr->ground.x = ptr->player.x;
-		ptr->ground.y = ptr->player.y;
+	else if (key == 65364 && !(checkcoins_exit(ptr, ptr->player.x,
+				ptr->player.y + 1)))
 		ptr->player.y += 1;
-		ptr->moves++;
-	}
 	else
 		return ;
+	ptr->moves++;
 	move_player(ptr);
 }

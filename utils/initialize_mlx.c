@@ -6,7 +6,7 @@
 /*   By: asajed <asajed@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 09:22:53 by asajed            #+#    #+#             */
-/*   Updated: 2025/02/01 09:15:45 by asajed           ###   ########.fr       */
+/*   Updated: 2025/02/01 09:44:03 by asajed           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,9 @@ void	initialize_mlx(t_data *ptr)
 		print_error_exit("cannot open xpm file", ptr);
 	ptr->wall.img = mlx_xpm_file_to_image(ptr->mlx, "assets/wall.xpm",
 			&ptr->wall.width, &ptr->wall.height);
-	if (!ptr->wall.img)
-		print_error_exit("cannot open xpm file", ptr);
 	ptr->ground.img = mlx_xpm_file_to_image(ptr->mlx, "assets/ground.xpm",
 			&ptr->ground.width, &ptr->ground.height);
-	if (!ptr->ground.img)
+	if (!ptr->wall.img || !ptr->ground.img)
 		print_error_exit("cannot open xpm file", ptr);
 	ptr->door.img = mlx_xpm_file_to_image(ptr->mlx, "assets/portal.xpm",
 			&ptr->door.width, &ptr->door.height);

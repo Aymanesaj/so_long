@@ -6,16 +6,17 @@
 /*   By: asajed <asajed@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 09:01:57 by asajed            #+#    #+#             */
-/*   Updated: 2025/01/31 20:32:58 by asajed           ###   ########.fr       */
+/*   Updated: 2025/02/01 10:15:46 by asajed           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "minilibx/mlx.h"
-# include "minilibx/mlx_int.h"
+# include <mlx.h>
 # include "LIBFT/libft.h"
+// # include "minilibx/mlx.h"
+// # include "minilibx/mlx_int.h"
 # include "utils/get_next_line/get_next_line.h"
 
 typedef struct s_element
@@ -70,8 +71,8 @@ void			print_error_exit(char *s, t_data *ptr);
 void			check_map_if_valid(t_data *ptr);
 void			player_position(t_data *ptr);
 int				count_char(t_data *ptr, char c, int num);
-int 	   		clean_and_exit(t_data *ptr, int key);
-void		    initialize_mlx(t_data *ptr);
+int				clean_and_exit(t_data *ptr, int key);
+void			initialize_mlx(t_data *ptr);
 void			draw_map(t_data *ptr);
 
 #endif
