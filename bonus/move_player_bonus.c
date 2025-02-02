@@ -6,7 +6,7 @@
 /*   By: asajed <asajed@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 16:08:21 by asajed            #+#    #+#             */
-/*   Updated: 2025/02/01 19:16:59 by asajed           ###   ########.fr       */
+/*   Updated: 2025/02/02 08:55:51 by asajed           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,15 +52,15 @@ int	checkcoins_exit_bonus(t_data *ptr, int x, int y)
 		ptr->map[y][x] = '0';
 	}
 	if (ptr->map[y][x] == 'E' && ptr->coin == -1)
-		(ft_putstr_fd(":::::::::{ you won }:::::::::\n", 1), clean_and_exit(ptr,
-				0));
+	{
+		ft_putstr_fd(":::::::::{ you won }:::::::::\n", 1);
+		clean_and_exit(ptr, 0);
+	}
 	return (0);
 }
 
 void	change_coordinates_bonus(t_data *ptr, int key)
 {
-	char	*num;
-
 	ptr->ground.x = ptr->player.x;
 	ptr->ground.y = ptr->player.y;
 	if (key == 65363 && !(checkcoins_exit_bonus(ptr, ptr->player.x + 1,
@@ -79,8 +79,4 @@ void	change_coordinates_bonus(t_data *ptr, int key)
 		return ;
 	ptr->moves++;
 	move_player_bonus(ptr);
-	num = ft_itoa(ptr->moves);
-	// mlx_string_put(ptr->mlx, ptr->win, 20, 32, 0xFF0000, "MOVES : ");
-	mlx_string_put(ptr->mlx, ptr->win, 20, 132, 0xFF0000, num);
-	free(num);
 }

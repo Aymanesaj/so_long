@@ -6,7 +6,7 @@
 /*   By: asajed <asajed@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 13:26:18 by asajed            #+#    #+#             */
-/*   Updated: 2025/02/01 19:14:16 by asajed           ###   ########.fr       */
+/*   Updated: 2025/02/02 08:52:01 by asajed           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,26 @@ int	insert_key_bonus(int key, t_data *ptr)
 
 int	frames_change(t_data *ptr)
 {
+	char	*num;
+
 	player_frames(ptr);
 	ptr->frames++;
+	num = ft_itoa(ptr->moves);
+	mlx_put_image_to_window(ptr->mlx, ptr->win, ptr->ground.img, 0, 0);
+	mlx_put_image_to_window(ptr->mlx, ptr->win, ptr->ground.img, 10, 0);
+	mlx_put_image_to_window(ptr->mlx, ptr->win, ptr->ground.img, 20, 0);
+	mlx_put_image_to_window(ptr->mlx, ptr->win, ptr->ground.img, 30, 0);
+	mlx_put_image_to_window(ptr->mlx, ptr->win, ptr->ground.img, 40, 0);
+	mlx_put_image_to_window(ptr->mlx, ptr->win, ptr->ground.img, 50, 0);
+	mlx_put_image_to_window(ptr->mlx, ptr->win, ptr->ground.img, 60, 0);
+	mlx_string_put(ptr->mlx, ptr->win, 10, 20, 0xFFFFFF, "M");
+	mlx_string_put(ptr->mlx, ptr->win, 20, 20, 0xFFFFFF, "O");
+	mlx_string_put(ptr->mlx, ptr->win, 30, 20, 0xFFFFFF, "V");
+	mlx_string_put(ptr->mlx, ptr->win, 40, 20, 0xFFFFFF, "E");
+	mlx_string_put(ptr->mlx, ptr->win, 50, 20, 0xFFFFFF, "S");
+	mlx_string_put(ptr->mlx, ptr->win, 60, 20, 0xFFFFFF, ":");
+	mlx_string_put(ptr->mlx, ptr->win, 70, 20, 0xFF0000, num);
+	free(num);
 	return (0);
 }
 

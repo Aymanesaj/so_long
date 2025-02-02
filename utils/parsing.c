@@ -6,7 +6,7 @@
 /*   By: asajed <asajed@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 16:06:33 by asajed            #+#    #+#             */
-/*   Updated: 2025/01/29 15:49:38 by asajed           ###   ########.fr       */
+/*   Updated: 2025/02/02 09:21:16 by asajed           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,12 @@ void	ft_map(t_data *ptr, int maplen)
 	if (!ptr->map)
 		(close(ptr->fd), print_error_exit("failed to allocate", ptr));
 	line = get_next_line(ptr->fd);
+	if (!line)
+	{
+		(free(ptr->map));
+		ptr->map = NULL;
+		(close(ptr->fd), print_error_exit("invalid map", ptr));
+	}
 	while (line && line[0] != '\n')
 	{
 		ptr->map[i] = ft_strdup(line);
@@ -68,8 +74,8 @@ void	ft_map(t_data *ptr, int maplen)
 		i++;
 	}
 	ptr->map[i] = NULL;
-	if (free_static(line, ptr->fd) == -1)
-		(close(ptr->fd), print_error_exit("invalid map", ptr));
+	if (line)
+		(free_static(line, ptr->fd), close(ptr->fd), print_error_exit("invalid map", ptr));
 	close(ptr->fd);
 }
 
