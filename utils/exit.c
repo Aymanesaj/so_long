@@ -6,11 +6,33 @@
 /*   By: asajed <asajed@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 16:30:16 by asajed            #+#    #+#             */
-/*   Updated: 2025/01/31 18:35:23 by asajed           ###   ########.fr       */
+/*   Updated: 2025/02/01 19:01:39 by asajed           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
+
+void	destroy(t_data *ptr)
+{
+	if (ptr->player.img)
+		mlx_destroy_image(ptr->mlx, ptr->player.img);
+	if (ptr->coins.img)
+		mlx_destroy_image(ptr->mlx, ptr->coins.img);
+	if (ptr->wall.img)
+		mlx_destroy_image(ptr->mlx, ptr->wall.img);
+	if (ptr->ground.img)
+		mlx_destroy_image(ptr->mlx, ptr->ground.img);
+	if (ptr->door.img)
+		mlx_destroy_image(ptr->mlx, ptr->door.img);
+	if (ptr->pac.closed)
+		mlx_destroy_image(ptr->mlx, ptr->pac.closed);
+	if (ptr->pac.enemy)
+		mlx_destroy_image(ptr->mlx, ptr->pac.enemy);
+	if (ptr->pac.open)
+		mlx_destroy_image(ptr->mlx, ptr->pac.open);
+	if (ptr->pac.semi)
+		mlx_destroy_image(ptr->mlx, ptr->pac.semi);
+}
 
 int	clean_and_exit(t_data *ptr, int key)
 {
@@ -24,18 +46,9 @@ int	clean_and_exit(t_data *ptr, int key)
 		ft_free(ptr->map);
 	if (ptr->filled_map)
 		ft_free(ptr->filled_map);
+	destroy(ptr);
 	if (ptr->img.img)
 		mlx_destroy_image(ptr->mlx, ptr->img.img);
-	if (ptr->player.img)
-		mlx_destroy_image(ptr->mlx, ptr->player.img);
-	if (ptr->coins.img)
-		mlx_destroy_image(ptr->mlx, ptr->coins.img);
-	if (ptr->wall.img)
-		mlx_destroy_image(ptr->mlx, ptr->wall.img);
-	if (ptr->ground.img)
-		mlx_destroy_image(ptr->mlx, ptr->ground.img);
-	if (ptr->door.img)
-		mlx_destroy_image(ptr->mlx, ptr->door.img);
 	if (ptr->mlx)
 		(mlx_destroy_display(ptr->mlx), free(ptr->mlx));
 	exit(ptr->status);

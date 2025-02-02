@@ -3,13 +3,21 @@ utils/get_next_line/get_next_line_utils.c  utils/parsing.c\
 utils/exit.c utils/helpers.c utils/valid.c utils/coordinates.c\
 utils/initialize_mlx.c utils/draw_map.c utils/move_player.c
 
+SRCS_BNS = main_bonus.c utils/get_next_line/get_next_line.c \
+utils/get_next_line/get_next_line_utils.c  bonus/parsing_bonus.c\
+utils/parsing.c utils/exit.c utils/helpers.c utils/valid.c \
+utils/coordinates.c utils/initialize_mlx.c utils/draw_map.c \
+utils/move_player.c bonus/initialize_mlx_bonus.c bonus/move_player_bonus.c\
+bonus/draw_map_bonus.c bonus/directions.c bonus/frames.c \
 
-CC = cc #-fsanitize=address -g
+CC = cc #-fsanitize=address -g3
 CFLAGS = -Wall -Wextra -Werror
 MLX_LIB = -lmlx -lX11 -lXext -lm
 OBJS = $(SRCS:.c=.o)
+OBJS_BNS = $(SRCS_BNS:.c=.o)
 LIBFT = LIBFT/libft.a
 NAME = so_long
+BONUS = so_long_bonus
 
 all: $(NAME)
 
@@ -19,10 +27,15 @@ $(NAME): $(OBJS)
 %.o: %.c
 	@$(CC) $(CFLAGS) -c $< -o $@
 
+bonus : $(BONUS)
+
+$(BONUS) : $(OBJS_BNS)
+	@$(CC) $(CFLAGS) $(OBJS_BNS) $(MLX_LIB) $(LIBFT) -o $(BONUS)
+
 clean:
-	@rm -f $(OBJS)
+	@rm -f $(OBJS) $(OBJS_BNS)
 
 fclean: clean
-	@rm -f $(NAME)
+	@rm -f $(NAME) $(BONUS)
 
 re: fclean all
