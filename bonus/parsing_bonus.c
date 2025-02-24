@@ -6,7 +6,7 @@
 /*   By: asajed <asajed@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 13:41:07 by asajed            #+#    #+#             */
-/*   Updated: 2025/02/01 18:13:30 by asajed           ###   ########.fr       */
+/*   Updated: 2025/02/02 10:19:01 by asajed           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,24 @@ void	player_position_bonus(t_data *ptr)
 
 void	parsing_bonus(t_data *ptr)
 {
+	int (i);
+	i = 0;
 	if (ft_strncmp(ptr->file + (ft_strlen(ptr->file) - 4), ".ber", 4))
 		print_error_exit("file format isn't supported", ptr);
+	if (!ft_strchr(ptr->file, '/'))
+	{
+		if (!ptr->file[4])
+			print_error_exit("extention is not allowed", ptr);
+	}
+	else
+	{
+		while (ptr->file[i] && ptr->file[i] != '/')
+			i++;
+		if (ptr->file[i] == '/')
+			i++;
+		if (!ft_strncmp(ptr->file + i, ".ber", 4))
+			print_error_exit("extention is not allowed", ptr);
+	}
 	ft_map(ptr, map_len(ptr));
 	check_map_if_valid_bonus(ptr);
 	player_position_bonus(ptr);

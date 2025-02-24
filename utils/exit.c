@@ -6,7 +6,7 @@
 /*   By: asajed <asajed@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 16:30:16 by asajed            #+#    #+#             */
-/*   Updated: 2025/02/01 19:01:39 by asajed           ###   ########.fr       */
+/*   Updated: 2025/02/24 08:16:29 by asajed           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,7 @@ int	clean_and_exit(t_data *ptr, int key)
 
 void	print_error_exit(char *s, t_data *ptr)
 {
-	ft_putstr_fd("Error : ", 2);
+	ft_putstr_fd("Error\n", 2);
 	ft_putstr_fd(s, 2);
-	ft_putchar_fd('\n', 2);
 	clean_and_exit(ptr, 1);
 }

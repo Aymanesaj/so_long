@@ -10,7 +10,7 @@ utils/coordinates.c utils/initialize_mlx.c utils/draw_map.c \
 utils/move_player.c bonus/initialize_mlx_bonus.c bonus/move_player_bonus.c\
 bonus/draw_map_bonus.c bonus/directions.c bonus/frames.c \
 
-CC = cc #-fsanitize=address -g3
+CC = cc
 CFLAGS = -Wall -Wextra -Werror
 MLX_LIB = -lmlx -lX11 -lXext -lm
 OBJS = $(SRCS:.c=.o)
@@ -21,21 +21,27 @@ BONUS = so_long_bonus
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	@$(CC) $(CFLAGS) $(OBJS) $(MLX_LIB) $(LIBFT) -o $(NAME)
+$(NAME): $(OBJS) $(LIBFT)
+	$(CC) $(CFLAGS) $(OBJS) $(MLX_LIB) $(LIBFT) -o $(NAME)
 
 %.o: %.c
-	@$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(LIBFT) :
+	$(MAKE) -C LIBFT
 
 bonus : $(BONUS)
 
 $(BONUS) : $(OBJS_BNS)
-	@$(CC) $(CFLAGS) $(OBJS_BNS) $(MLX_LIB) $(LIBFT) -o $(BONUS)
+	$(CC) $(CFLAGS) $(OBJS_BNS) $(MLX_LIB) $(LIBFT) -o $(BONUS)
+
 
 clean:
-	@rm -f $(OBJS) $(OBJS_BNS)
+	rm -f $(OBJS) $(OBJS_BNS)
+	$(MAKE) -C LIBFT clean
 
 fclean: clean
-	@rm -f $(NAME) $(BONUS)
+	rm -f $(NAME) $(BONUS)
+	$(MAKE) -C LIBFT fclean
 
 re: fclean all
