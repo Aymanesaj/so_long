@@ -6,7 +6,7 @@
 /*   By: asajed <asajed@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 16:08:21 by asajed            #+#    #+#             */
-/*   Updated: 2025/02/01 10:13:45 by asajed           ###   ########.fr       */
+/*   Updated: 2025/02/27 14:23:59 by asajed           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	move_player(t_data *ptr)
 		* 32, ptr->ground.y * 32);
 	ft_putstr_fd("moves : ", 1);
 	ft_putnbr_fd(ptr->moves, 1);
-	ft_putstr_fd("\n", 1);
+	ft_putstr_fd("\r", 1);
 	if (!ptr->coin)
 		check_door(ptr);
 }
